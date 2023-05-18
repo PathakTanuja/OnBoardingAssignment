@@ -1,8 +1,21 @@
-// using readline coreModule
 
+
+const fs = require(`fs`);   //fs module to write on file
 const readline = require(`readline`);
 var addFun = require('./index.js');
 
+const saveuserDetailToFile = (name,age,details) => {
+    fs.writeFile(`userdetail.txt` ,` Data successfully write to file 
+    name: ${name}
+    age: ${age}
+    address: ${details}
+    `
+    , err => {
+        if(err){
+            console.log('error occured  when writing to file');
+        }
+    });
+}
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -17,6 +30,7 @@ const rl = readline.createInterface({
        rl.question(`Fill your other detail:`,(details) => {
         console.log(`${name} your detail: ${details}`);
         rl.close();
+        saveuserDetailToFile(name,age,details);
        });
       
 });

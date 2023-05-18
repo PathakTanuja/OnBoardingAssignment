@@ -1,0 +1,5 @@
+ Data successfully write to file 
+    name: Ram
+    age: 36
+    address: Mumbai
+    
