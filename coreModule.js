@@ -1,8 +1,23 @@
+// using readline coreModule
 
-console.log("local Node module  uses when  multiple function in the file");
-
-//export one file function to another file
+const readline = require(`readline`);
 var addFun = require('./index.js');
-console.log("display the user name with welcome note and check age:");
-addFun.welcomeMsg("Ram");
-addFun.compareUserAge(10);
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+ rl.question('enter your name:', (name) => {
+    rl.question('enter your age: ' , (age) => {
+        addFun.welcomeMsg(name);
+       // console.log(`hello , ${name}`);
+        addFun.compareUserAge(age);
+       rl.question(`Fill your other detail:`,(details) => {
+        console.log(`${name} your detail: ${details}`);
+        rl.close();
+       });
+      
+});
+    });
